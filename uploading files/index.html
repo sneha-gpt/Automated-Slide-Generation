@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Processing</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Document Processing</h1>
+        <button class="back-button">Back to Home</button>
+      </header>
+
+      <div class="progress-bar">
+        <div class="step active">
+          <div class="step-number">1</div>
+          <div class="step-label">Upload</div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-label">Extract</div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-label">Analyze</div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-label">Review</div>
+        </div>
+      </div>
+
+      <main>
+        <section class="upload-section">
+          <h2>Document Upload</h2>
+          <p class="subtitle">Select one or multiple documents to process</p>
+
+          <div class="upload-container">
+            <label for="file-upload" class="custom-file-upload">
+              Choose files
+            </label>
+            <input type="file" id="file-upload" multiple accept=".pdf,.txt" />
+            <span id="file-name">No file chosen</span>
+          </div>
+
+          <p class="supported-formats">Supported formats: PDF, TXT</p>
+
+          <button id="process-button" class="process-button" disabled>
+            Process Documents
+          </button>
+        </section>
+
+        <section class="analysis-results" style="display: none">
+          <h2>Analysis Results</h2>
+          <p class="subtitle">Extracted content from your documents</p>
+
+          <div class="tabs">
+            <button class="tab-button active">Results</button>
+            <button class="tab-button">Summary</button>
+            <button class="tab-button">Details</button>
+          </div>
+
+          <div class="content-box">
+            <!-- Results will be dynamically inserted here -->
+          </div>
+
+          <div class="action-buttons">
+            <button class="action-button">Download Results</button>
+            <button class="action-button secondary">Start Over</button>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
