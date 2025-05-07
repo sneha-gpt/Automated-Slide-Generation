@@ -1,0 +1,326 @@
+*{
+    font-family: "EB Garamond", serif;
+}
+
+body{
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.nav{
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px;
+    color: white;
+}
+
+/* Button */
+
+button {
+    background-color: black; 
+    color: white; 
+    border: 1px solid white;  
+    padding: 8px 16px;  
+    border-radius: 8px;  
+    font-size: 16px;  
+    cursor: pointer;  
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #333;  
+    transform: scale(1.05);  
+}
+
+button:active {
+    transform: scale(0.95);  
+}
+
+/* User Prompt */
+
+.userPrompt {
+    background-color: #111;
+    padding: 16px;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.voice-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.voice-btn {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.voice-btn:hover {
+    background-color: #ddd;
+}
+
+.voice-text {
+    color: #bbb;
+    font-size: 14px;
+}
+
+.status {
+    background-color: #444;
+    color: white;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.inactive {
+    background-color: black;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+input {
+    flex: 1;
+    background: transparent;
+    border: 1px solid #444;
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.send-btn {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.send-btn:hover {
+    background-color: #ddd;
+}
+
+/* Steps */
+
+.step-container {
+    margin-top: 20px;
+    display: flex;
+    gap: 50px; 
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #bbb; /* Default text color */
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #222; /* Default background */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.label {
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+.active .circle {
+    background-color: white;
+    color: black;
+}
+
+.active .label {
+    color: white;
+}
+
+/* Style and Preview */
+
+.container {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+    color: white;
+}
+
+.style-options, .preview {
+    background-color: #151515;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+select, input[type="color"] {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    background: #222;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 5px;
+}
+
+.preview-box {
+    background-color: #222;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.sample-slide {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.theme-btn {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.preview-text {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+/* Generate and Reset */
+
+.button-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    padding: 10px 0;
+    gap: 20px;
+}
+
+.generate-btn, .reset-btn {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.generate-btn {
+    flex: 1; /* Allows it to take available space */
+    background-color: white;
+    color: black;
+    border: 1px solid white;
+}
+
+.generate-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.reset-btn {
+    flex: 1;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+.reset-btn:hover {
+    background-color: #333;
+}
+
+/* Voice Commands */
+
+
+.voice-commands {
+    background-color: #111; /* Dark background */
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+}
+
+.voice-commands h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.voice-commands p {
+    font-size: 14px;
+    color: #bbb;
+    margin-bottom: 15px;
+}
+
+.commands-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.command-section {
+    flex: 1;
+    min-width: 200px;
+    margin-right: 20px;
+}
+
+.command-section h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #ddd;
+}
+
+.command-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.command-section li {
+    font-size: 14px;
+    color: #bbb;
+    margin-bottom: 5px;
+}
