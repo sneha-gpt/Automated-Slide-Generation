@@ -1,0 +1,193 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#Heading{
+    
+    left: 50px;
+    text-align: center;
+    color: white;
+}
+#Heading h4{
+    color: rgb(97, 94, 94);
+}
+
+#head_btn {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(34, 32, 32);
+    color: rgb(248, 245, 245);
+}
+button a{
+    text-decoration: none;
+    color: white;
+}
+
+button:hover {
+    background-color: #dbd3d3;
+    color: black;
+}
+
+
+
+main {
+    background-color: rgb(8, 8, 8);
+    border-radius: 35px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-color: bisque;
+}
+
+#working {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: white;
+}
+#working p{
+    color: rgb(97, 94, 94);
+}
+
+#cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;  /* Adds space between cards */
+    margin-top: 20px;
+}
+
+
+#card1, #card2, #card3 {
+    background-color: rgb(14, 14, 13);
+    border-radius: 20px;
+    padding: 20px;
+    height: auto;
+    width: 30%;  /* 30% width for 3 cards with gap */
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+#card1:hover, #card2:hover, #card3:hover {
+    background-color: rgb(24, 24, 24);  /* Slightly lighter color on hover */
+    transform: translateY(-5px);       /* Adds slight lift effect */
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.3); /* Glowing shadow effect */
+    transition: all 0.3s ease-in-out;  /* Smooth transition */
+}
+
+#main2{
+    background-color: rgb(8, 8, 8);
+    border-radius: 35px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-color: bisque;
+}
+
+#working2{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: white;
+}
+#working2 p{
+    color: rgb(97, 94, 94);
+}
+
+footer {
+    background-color: rgb(8, 8, 8);
+    border-radius: 35px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-color: bisque;
+}
+
+#working3 {
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: white;
+}
+#working3 p{
+    color: rgb(97, 94, 94);
+}
+
+
+footer #cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* Space between cards */
+    margin-top: 20px;
+    position: relative; /* Important for positioning arrows */
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer #card1, #card2, #card3, #card4 {
+    background-color: rgb(14, 14, 13);
+    border-radius: 20px;
+    padding: 20px;
+    height: auto;
+    width: 40%;  /* Reduced size for better spacing */
+    text-align: center;
+    color: white;
+   
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    position: relative; /* Needed for arrow animation */
+}
+
+
+
+
+/*responsiveness*/
+
+ 
+/* Media Queries for Responsiveness */
+
+/* For Tablets and Small Screens */
+@media (max-width: 768px) {
+    #cards {
+        grid-template-columns: 1fr; /* Stack cards vertically */
+    }
+    #head_btn {
+        flex-direction: column;
+        align-items: center;
+    }
+    #Heading h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* For Mobile Devices */
+@media (max-width: 480px) {
+    #cards {
+        grid-template-columns: 1fr;
+    }
+    #Heading h1 {
+        font-size: 1.5rem;
+    }
+    #head_btn button {
+        width: 100%;
+    }
+}
