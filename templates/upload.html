@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Processing</title>
+    <link rel="stylesheet" href="../static/css/upload.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Document Processing</h1>
+        <button class="cta-button">Back to Home</button>
+      </header>
+
+      <div class="progress-bar">
+        <div class="step active">
+          <div class="step-number">1</div>
+          <div class="step-label">Upload</div>
+        </div>
+        <div class="step step-extract">
+          <div class="step-number">2</div>
+          <div class="step-label">Extract</div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-label">Analyze</div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-label">Review</div>
+        </div>
+      </div>
+
+      <main>
+        <section class="upload-section feature-card">
+          <h2>Document Upload</h2>
+          <p class="subtitle">Select a document to process</p>
+
+          <form id="upload-form" enctype="multipart/form-data">
+            <div class="upload-container">
+              <label for="file-upload" class="custom-file-upload">
+                Choose file
+              </label>
+              <input type="file" id="file-upload" name="file" accept=".pdf,.txt" />
+              <span id="file-name">No file chosen</span>
+            </div>
+
+            <p class="supported-formats">Supported formats: PDF, TXT</p>
+
+            <button id="process-button" class="cta-button" disabled>
+              Process Document
+            </button>
+          </form>
+        </section>
+
+        <section class="analysis-results feature-card" style="display: none">
+          <h2>Analysis Results</h2>
+          <p class="subtitle">Extracted content from your document</p>
+
+          <div class="tabs">
+            <button class="tab-button active" data-tab="extracted-texts">Extracted Text</button>
+            <button class="tab-button" data-tab="summary">Summary</button>
+            <button class="tab-button" data-tab="keypoints">Keypoints</button>
+          </div>
+
+          <div class="content-box">
+            <!-- Results will be dynamically inserted here -->
+          </div>
+
+          <div class="action-buttons">
+            <button class="cta-button">Download Results</button>
+            <button class="cta-button">Customize Presentation</button>
+            <button class="cta-button secondary">Start Over</button>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="../static/js/upload.js"></script>
+  </body>
+</html>
