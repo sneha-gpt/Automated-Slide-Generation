@@ -5,6 +5,33 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
   }
 
+    // Check if Firebase is loaded
+  if (typeof firebase === "undefined") {
+    console.error("Firebase is not loaded. Please ensure the Firebase scripts are included.");
+    return;
+  }
+
+  // Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAzE0EmATnlMqFooV1aNCU0h1c1wsGBEN0",
+    authDomain: "automated-slide-generation.firebaseapp.com",
+    projectId: "automated-slide-generation",
+    storageBucket: "automated-slide-generation.firebasestorage.app",
+    messagingSenderId: "262134603450",
+    appId: "1:262134603450:web:049dd5b95a121798e76c83",
+    measurementId: "G-5D502BDDND"
+  };
+
+  // Initialize Firebase
+  try {
+    firebase.initializeApp(firebaseConfig);
+  } catch (error) {
+    console.error("Firebase initialization failed:", error.message);
+    alert("Failed to initialize Firebase. Please try again later.");
+    return;
+  }
+  const auth = firebase.auth();
+
   // Get viewport dimensions
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
@@ -132,7 +159,96 @@ gsap.from("#head_btn button", {
           }
       );
   }
+  if (googleLoginBtn) {
+    gsap.fromTo("#googleLoginBtn",
+      { y: -20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        delay: 0.5,
+        ease: "power3.out",
+        onComplete: () => console.log("Google login button animation completed")
+      }
+    );
+  }
 
+  // Google Sign-In logic
+  if (googleLoginBtn && userDropdown && logoutBtn) {
+    googleLoginBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (googleLoginBtn.classList.contains("profile-pic")) {
+        // Toggle dropdown visibility
+        userDropdown.classList.toggle("active");
+      } else {
+        // Sign in with Google
+        try {
+          const provider = new firebase.auth.GoogleAuthProvider();
+          auth.signInWithPopup(provider)
+            .then((result) => {
+              const user = result.user;
+              console.log("User signed in:", user.displayName, user.email);
+              // Stay on the same page
+            })
+            .catch((error) => {
+              console.error("Google Sign-In Error:", error.code, error.message);
+              if (error.code === "auth/unauthorized-domain") {
+                alert("This domain is not authorized for OAuth operations. Please ensure 'localhost' or '127.0.0.1' is added to Authorized domains in the Firebase Console (Authentication > Settings > Authorized domains).");
+              } else {
+                alert("Error signing in: " + error.message);
+              }
+            });
+        } catch (error) {
+          console.error("Error initializing Google Auth Provider:", error.message);
+          alert("Authentication setup failed. Please try again later.");
+        }
+      }
+    });
+
+    // Logout button logic
+    logoutBtn.addEventListener("click", () => {
+      auth.signOut()
+        .then(() => {
+          console.log("User signed out");
+          userDropdown.classList.remove("active");
+        })
+        .catch((error) => {
+          console.error("Sign-out error:", error.message);
+          alert("Error signing out: " + error.message);
+        });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!googleLoginBtn.contains(e.target) && !userDropdown.contains(e.target)) {
+        userDropdown.classList.remove("active");
+      }
+    });
+  }
+
+  // Authentication state listener
+  auth.onAuthStateChanged((user) => {
+    if (user && googleLoginBtn && userName && userEmail) {
+      console.log("User is signed in:", user.displayName);
+      // Show profile picture
+      googleLoginBtn.classList.add("profile-pic");
+      googleLoginBtn.innerHTML = `<img src="${user.photoURL || 'https://via.placeholder.com/40'}" alt="Profile Picture" title="View account">`;
+      googleLoginBtn.style.display = "inline-block";
+      // Update dropdown info
+      userName.textContent = user.displayName || "User";
+      userEmail.textContent = user.email || "No email";
+    } else if (googleLoginBtn && userDropdown) {
+      console.log("No user is signed in.");
+      // Show sign-in button
+      googleLoginBtn.classList.remove("profile-pic");
+      googleLoginBtn.innerHTML = "Sign in with Google";
+      googleLoginBtn.style.display = "inline-block";
+      userDropdown.classList.remove("active");
+      // Clear dropdown info
+      if (userName) userName.textContent = "";
+      if (userEmail) userEmail.textContent = "";
+    }
+  });
   // Outward animation on button click
   if (startButton) {
       startButton.addEventListener("click", () => {

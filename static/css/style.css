@@ -18,13 +18,14 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
 header {
   text-align: center;
+  position: relative;
 }
 
 #head_btn {
@@ -51,6 +52,11 @@ button a{
 button:hover {
     background-color: #dbd3d3;
     color: black;
+}
+.auth-container {
+  position: absolute;
+  top: 20px;
+  right: calc(50% - 720px);
 }
 
 #Heading h1 {
@@ -170,75 +176,215 @@ button:hover {
   box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
 }
 
-@media (min-width: 768px) {
-  .card {
-      width: 48%;
+#googleLoginBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #db4437, #c23321);
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#googleLoginBtn.profile-pic {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#googleLoginBtn.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#googleLoginBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(219, 68, 55, 0.4);
+}
+
+#googleLoginBtn.profile-pic:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.user-dropdown {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: #ffffff;
+  color: #202124;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  max-width: 90vw;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.user-dropdown.active {
+  display: block;
+}
+
+.user-info p {
+  margin: 0 0 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+#userName {
+  font-weight: 500;
+}
+
+#userEmail {
+  color: #5f6368;
+}
+
+.logout-button {
+  width: 100%;
+  padding: 8px;
+  background: #f8f9fa;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  color: #202124;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.logout-button:hover {
+  background: #e8eaed;
+}
+
+@media (max-width: 1440px) {
+  .auth-container {
+    right: 20px; /* Fixed margin for screens narrower than container */
   }
 }
 
-@media (min-width: 992px) {
-  .card {
-      width: 31%;
+@media (max-width: 992px) {
+  .auth-container {
+    top: 15px;
+    right: 15px;
+  }
+  #googleLoginBtn {
+    padding: 9px 18px; /* Slightly smaller but not too cramped */
+    font-size: 0.75em;
+  }
+  #googleLoginBtn.profile-pic {
+    width: 36px; /* Intermediate size for tablets */
+    height: 36px;
+  }
+  .user-dropdown {
+    top: 50px;
+    min-width: 180px;
   }
 }
 
 @media (max-width: 768px) {
   .container {
-      padding: 30px 15px;
+    padding: 30px 15px;
   }
-
+  .auth-container {
+    top: 10px;
+    right: 10px;
+  }
+  #googleLoginBtn {
+    padding: 8px 15px;
+    font-size: 0.7em;
+  }
+  #googleLoginBtn.profile-pic {
+    width: 32px;
+    height: 32px;
+  }
+  .user-dropdown {
+    top: 45px;
+    min-width: 160px;
+    max-width: 80vw; /* Tighter constraint for small screens */
+  }
   #Heading h1 {
-      font-size: 2.2em;
+    font-size: 2.2em;
   }
-
   #Heading h4 {
-      font-size: 1.2em;
+    font-size: 1.2em;
   }
-
   #working h2, #working2 h2, #working3 h2 {
-      font-size: 2em;
+    font-size: 2em;
   }
-
   .subtitle {
-      font-size: 1em;
+    font-size: 1em;
   }
-
   .card h3 {
-      font-size: 1.4em;
+    font-size: 1.4em;
   }
-
   .card p {
-      font-size: 1em;
+    font-size: 1em;
   }
-
   .card ul li {
-      font-size: 0.9em;
+    font-size: 0.9em;
   }
-
   .action-button {
-      padding: 12px 30px;
-      font-size: 1.1em;
+    padding: 12px 30px;
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 576px) {
+  .auth-container {
+    top: 8px;
+    right: 8px;
+  }
+  #googleLoginBtn {
+    padding: 6px 10px;
+    font-size: 0.5em;
+  }
+  #googleLoginBtn.profile-pic {
+    width: 28px;
+    height: 28px;
+  }
+  .user-dropdown {
+    top: 40px;
+    min-width: 140px;
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 48%;
+  }
+}
+
+@media (min-width: 992px) {
+  .card {
+    width: 31%;
   }
 }
 
 @media (max-height: 600px) {
   .container {
-      padding: 20px 15px;
+    padding: 20px 15px;
   }
-
   #Heading h1 {
-      font-size: 2em;
+    font-size: 2em;
   }
-
   #Heading h4 {
-      font-size: 1.1em;
+    font-size: 1.1em;
   }
-
   #working h2, #working2 h2, #working3 h2 {
-      font-size: 1.8em;
+    font-size: 1.8em;
   }
-
   .subtitle {
-      font-size: 0.9em;
+    font-size: 0.9em;
   }
 }

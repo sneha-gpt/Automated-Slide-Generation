@@ -20,6 +20,17 @@
                 <button id="word_doc">Word Documents</button>
                 <button>Text Files</button>
         </div>
+        <div class="auth-container">
+        <a href="#" id="googleLoginBtn" class="google-login-button">Sign in with Google</a>
+        <div id="userDropdown" class="user-dropdown">
+          <div class="user-info">
+            <p id="userName"></p>
+            <p id="userEmail"></p>
+          </div>
+          <button id="logoutBtn" class="logout-button">Logout</button>
+        </div>
+      </div>
+
 
     </header>
 
@@ -117,6 +128,10 @@
             </div>
         </div>
     </footer>
+    <!-- Firebase SDK (Compatibility Layer) -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+   
 
     <!-- Load GSAP scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
