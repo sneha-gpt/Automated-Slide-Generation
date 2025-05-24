@@ -362,6 +362,7 @@ button:hover {
 @media (min-width: 768px) {
   .card {
     width: 48%;
+
   }
 }
 
@@ -388,3 +389,136 @@ button:hover {
     font-size: 0.9em;
   }
 }
+
+
+@media (max-width: 575px) {
+  #Heading {
+      font-size: small;
+  }
+}
+
+@media (max-width: 587px) {
+  #Heading {
+      font-size: small;
+  }
+}
+@media (max-width: 587px) {
+  #head_btn {
+      font-size: small;
+  }
+  #working{
+    font-size: small;
+  }
+  #working2{
+    font-size: small;
+  }
+
+}
+
+@media (max-width: 443px) {
+
+  #Heading {
+      font-size: smaller;
+  }
+  #head_btn {
+      font-size: smaller;
+  }
+  #working{
+    font-size: smaller;
+  }
+  #working2{
+    font-size: smaller;
+  }
+
+}
+
+@media (max-width: 375px) {
+
+  #Heading {
+      font-size: smaller;
+  }
+  #head_btn {
+      font-size: smaller;
+  }
+  #working{
+    font-size: smaller;
+  }
+  #working2{
+    font-size: smaller;
+    
+  }
+  
+
+}
+    
+
+@media (max-width: 310px) {
+
+  #Heading {
+      font-size: smaller;
+  }
+  #head_btn button {
+      font-size: smaller;
+  }
+  #working{
+    font-size: smaller;
+  }
+  #working2{
+    font-size: smaller;
+    
+  }
+  #card1,#card2,#card3{
+    font-size: smaller;
+  }
+  #working2 h2{
+    font-size: medium;
+  }
+  .action-button{
+    font-size: small;
+  }
+  }
+
+  @media (max-width: 249px) {
+
+   .action-button{
+      font-size: smaller;
+  }
+}
+
+@media (max-width: 223px) {
+
+   .action-button{
+      font-size: smaller;
+      
+  }
+}
+
+
+@media (max-width: 365px) {
+
+   .auth-container{
+      font-size: smaller;
+      
+  }
+}
+
+@media (max-width: 485px) {
+
+   .auth-container{
+      font-size: smaller;
+      
+  }
+}
+@media (max-width: 311px) {
+
+   .auth-container{
+      font-size: smaller;
+      
+  }
+}
+
+
+
+  
+    
+    
