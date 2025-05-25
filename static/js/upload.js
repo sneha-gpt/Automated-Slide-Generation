@@ -213,3 +213,51 @@ document.addEventListener("DOMContentLoaded", () => {
     switchTab("extracted-texts");
   }
 });
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // Animate the header (fade in and slide down)
+        gsap.from("header h1", {
+            duration: 1,
+            opacity: 0,
+            y: -50,
+            ease: "power2.out"
+        });
+
+        // Animate the back button (fade in with delay)
+        gsap.from("#back", {
+            duration: 1,
+            opacity: 0,
+            delay: 0.5,
+            ease: "power2.out"
+        });
+
+        // Animate the progress bar steps (staggered fade-in and slide from left)
+        gsap.from(".step", {
+            duration: 0.8,
+            opacity: 0,
+            x: -30,
+            stagger: 0.2,
+            delay: 0.2,
+            ease: "power2.out"
+        });
+
+        // Animate the upload section (fade in and slide up)
+        gsap.from(".upload-section", {
+            duration: 1,
+            opacity: 0,
+            y: 50,
+            delay: 0.5,
+            ease: "power2.out"
+        });
+
+        // Animate the upload section's content (staggered fade-in for children)
+        gsap.from(".upload-section > *", {
+            duration: 0.8,
+            opacity: 0,
+            y: 20,
+            stagger: 0.1,
+            delay: 0.7,
+            ease: "power2.out"
+        });
+    });
