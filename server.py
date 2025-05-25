@@ -11,6 +11,10 @@ from sumy.summarizers.lex_rank import LexRankSummarizer
 import traceback
 import re
 from dotenv import load_dotenv
+from pptx import Presentation
+from pptx.util import Pt
+from pptx.dml.color import RGBColor
+from io import BytesIO
 
 # Load environment variables from .env file
 load_dotenv()
@@ -159,7 +163,7 @@ def index():
 def customize():
 
     try:
-        return render_template('1_customize.html')
+        return render_template('customize.html')
     except Exception as e:
         return jsonify({'error': 'Template not found'}), 404
 
@@ -169,6 +173,60 @@ def upload():
         return render_template('upload.html')
     except Exception as e:
         return jsonify({'error': 'Template not found'}), 404
+
+def hex_to_rgb(hex_color):
+    """Convert hex color like '#ffcc00' to RGBColor"""
+    hex_color = hex_color.lstrip("#")
+    return RGBColor(int(hex_color[0:2], 16),
+                    int(hex_color[2:4], 16),
+                    int(hex_color[4:6], 16))
+
+@app.route('/generate_ppt', methods=['POST'])
+def generate_ppt():
+    slides_data = request.json['slides']
+    prs = Presentation()
+
+    for slide_info in slides_data:
+        slide = prs.slides.add_slide(prs.slide_layouts[1])
+        title_shape = slide.shapes.title
+        content_shape = slide.placeholders[1]
+
+        # Set title and bullet points
+        title_shape.text = slide_info['title']
+        content_shape.text = '\n'.join(slide_info['points'])
+
+        styles = slide_info.get('styles', {})
+        font_name = styles.get('font')
+        font_color = styles.get('color')
+        bg_color = styles.get('backgroundColor')
+
+        # Apply background color
+        if bg_color:
+            try:
+                rgb = hex_to_rgb(bg_color)
+                slide.background.fill.solid()
+                slide.background.fill.fore_color.rgb = rgb
+            except Exception as e:
+                print(f"Invalid background color: {bg_color}, error: {e}")
+
+        # Apply font name and color to all text in this slide
+        for shape in slide.shapes:
+            if hasattr(shape, "text_frame") and shape.text_frame:
+                for paragraph in shape.text_frame.paragraphs:
+                    for run in paragraph.runs:
+                        run.font.size = Pt(18)
+                        if font_name:
+                            run.font.name = font_name
+                        if font_color:
+                            try:
+                                run.font.color.rgb = hex_to_rgb(font_color)
+                            except Exception as e:
+                                print(f"Invalid font color: {font_color}, error: {e}")
+
+    output = BytesIO()
+    prs.save(output)
+    output.seek(0)
+    return send_file(output, download_name="custom_slides.pptx", as_attachment=True)
 
 
 @app.route('/process', methods=['POST', 'OPTIONS'])
