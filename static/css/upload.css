@@ -81,6 +81,11 @@ header {
   transform: none;
 }
 
+.action-buttons .cta-button {
+  width: 100%; /* Make each button full width */
+}
+
+
 .process-button {
   width: 100%;
 }
@@ -296,7 +301,7 @@ input[type="file"] {
     font-size: 0.85rem;
   }
 
-  .cta-button, .process-button {
+  .process-button {
     max-width: 180px;
   }
 
@@ -326,7 +331,7 @@ input[type="file"] {
   }
 
   header h1 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .step {
@@ -355,10 +360,6 @@ input[type="file"] {
   .custom-file-upload, .cta-button, .process-button, .action-button, .tab-button {
     padding: 0.4rem 0.8rem;
     font-size: 0.75rem;
-  }
-
-  .cta-button {
-    max-width: 150px;
   }
 
   #file-name {
@@ -402,10 +403,6 @@ input[type="file"] {
   .cta-button, .process-button, .action-button, .custom-file-upload, .tab-button {
     padding: 0.55rem 1.1rem;
     font-size: 0.9rem;
-  }
-
-  .cta-button {
-    max-width: 220px;
   }
 }
 
