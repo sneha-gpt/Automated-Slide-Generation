@@ -10,6 +10,10 @@ from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.lex_rank import LexRankSummarizer
 import traceback
 import re
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 
 logging.basicConfig(level=logging.INFO)
@@ -137,12 +141,23 @@ def generate_keypoints(section_summaries):
 @app.route('/')
 def index():
     try:
-        return render_template('index.html')
+        # Pass Firebase config to the template
+        firebase_config = {
+            'apiKey': os.getenv('FIREBASE_API_KEY'),
+            'authDomain': os.getenv('FIREBASE_AUTH_DOMAIN'),
+            'projectId': os.getenv('FIREBASE_PROJECT_ID'),
+            'storageBucket': os.getenv('FIREBASE_STORAGE_BUCKET'),
+            'messagingSenderId': os.getenv('FIREBASE_MESSAGING_SENDER_ID'),
+            'appId': os.getenv('FIREBASE_APP_ID'),
+            'measurementId': os.getenv('FIREBASE_MEASUREMENT_ID')
+        }
+        return render_template('index.html', firebase_config=firebase_config)
     except Exception as e:
         return jsonify({'error': 'Template not found'}), 404
 
 @app.route('/customize')
 def customize():
+
     try:
         return render_template('1_customize.html')
     except Exception as e:
