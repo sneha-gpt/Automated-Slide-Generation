@@ -17,6 +17,8 @@ from pptx.dml.color import RGBColor
 from io import BytesIO
 from flask import send_file
 
+
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -26,6 +28,16 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 CORS(app)
+
+from flask import after_this_request
+
+@app.after_request
+def add_header(response):
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
+
 
 # Load the summarization model
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
