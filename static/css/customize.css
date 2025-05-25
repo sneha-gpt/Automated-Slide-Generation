@@ -1,0 +1,476 @@
+* {
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+:root {
+    --primary-bg: #1a1a1a;
+    --secondary-bg: #2a2a2a;
+}
+
+body {
+    background: var(--primary-bg) !important; /* Use !important to override potential specificity issues */
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: white;
+}
+
+/* Button */
+button {
+    background-color: var(--primary-bg); /* Replace black with primary-bg */
+    color: white;
+    border: 1px solid white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: var(--secondary-bg); /* Replace #333 with secondary-bg */
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* User Prompt */
+.userPrompt {
+    background-color: var(--secondary-bg); /* Replace #111 with secondary-bg */
+    padding: 16px;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.voice-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.voice-btn {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.voice-btn:hover {
+    background-color: #ddd;
+}
+
+.voice-text {
+    color: #bbb;
+    font-size: 10px;
+}
+
+.status {
+    background-color: #444;
+    color: white;
+    padding: 4px 8px;
+    font-size: 10px;
+    border-radius: 4px;
+}
+
+.inactive {
+    background-color: var(--primary-bg); /* Replace black with primary-bg */
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-bg); /* Replace black with primary-bg */
+    padding: 6px;
+    border-radius: 6px;
+}
+
+input {
+    flex: 1;
+    background: transparent;
+    border: 1px solid #444;
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    outline: none;
+}
+
+.send-btn {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.send-btn:hover {
+    background-color: #ddd;
+}
+
+/* Steps */
+.step-container {
+    margin-top: 20px;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #bbb;
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--secondary-bg); /* Replace #222 with secondary-bg */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.label {
+    margin-top: 6px;
+    font-size: 12px;
+}
+
+.active .circle {
+    background-color: #007bff;
+}
+
+.active .label {
+    color: white;
+}
+
+/* Style and Preview */
+.container {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+    color: white;
+}
+
+.style-options, .preview {
+    background-color: var(--secondary-bg); /* Replace #151515 with secondary-bg */
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+select, input[type="color"] {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    background: var(--secondary-bg); /* Replace #222 with secondary-bg */
+    color: white;
+    border: 1px solid #444;
+    border-radius: 5px;
+}
+
+.style-options input[type="text"],
+.style-options input[type="number"] {
+    padding: 8px;
+    margin: 5px 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.style-options button {
+    padding: 8px 16px;
+    margin: 5px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.style-options button:hover {
+    background-color: #45a049;
+}
+
+#previewBox {
+    max-height: 500px;
+    overflow-y: auto;
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 0 10px #444;
+    color: #f1f1f1;
+}
+
+.preview-slide {
+    background: #2a2a2a;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 5px #888;
+}
+
+.preview-slide h3 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+    font-family: inherit !important;
+    color: inherit !important;
+}
+
+.preview-slide ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.preview-slide li {
+    margin-bottom: 5px;
+    font-family: inherit !important;
+    color: inherit !important;
+}
+
+/* Theme styles applied to both preview-box and preview-slide */
+.preview-box.modern, .preview-box.modern .preview-slide {
+    background: #e6f0fa;
+    border-color: #007BFF;
+    color: #333;
+}
+
+.preview-box.classic, .preview-box.classic .preview-slide {
+    background: #f5f5f5;
+    border-color: #333;
+    color: #000;
+}
+
+.preview-box.dark, .preview-box.dark .preview-slide {
+    background: #2c2c2c;
+    border-color: #666;
+    color: #fff;
+}
+
+/* Layout styles */
+.preview-box.widescreen {
+    aspect-ratio: 16 / 9;
+    max-width: 800px;
+}
+
+.preview-box.standard {
+    aspect-ratio: 4 / 3;
+    max-width: 600px;
+}
+
+/* Generate and Reset */
+.button-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    padding: 10px 0;
+    gap: 20px;
+}
+
+.generate-btn, .reset-btn {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.generate-btn {
+    flex: 1;
+    background-color: white;
+    color: black;
+    border: 1px solid white;
+}
+
+.generate-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.reset-btn {
+    flex: 1;
+    background-color: var(--primary-bg); /* Replace black with primary-bg */
+    color: white;
+    border: 1px solid white;
+}
+
+.reset-btn:hover {
+    background-color: var(--secondary-bg); /* Replace #333 with secondary-bg */
+}
+
+/* Voice Commands */
+.voice-commands {
+    background-color: var(--secondary-bg); /* Replace #111 with secondary-bg */
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+}
+
+.voice-commands h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.voice-commands p {
+    font-size: 12px;
+    color: #bbb;
+    margin-bottom: 15px;
+}
+
+.commands-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.command-section {
+    flex: 1;
+    min-width: 200px;
+    margin-right: 20px;
+}
+
+.command-section h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #ddd;
+}
+
+.command-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.command-section li {
+    font-size: 12px;
+    color: #bbb;
+    margin-bottom: 5px;
+}
+
+.status {
+    transition: color 0.3s;
+}
+
+.status.inactive {
+    color: #aaa;
+}
+
+.status.success {
+    color: green;
+}
+
+.status.error {
+    color: red;
+}
+
+
+/* Media Queries */
+@media (max-width: 875px) {
+    h1 {
+        font-size: 16px;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .style-options, .preview {
+        width: 90%;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .generate-btn, .reset-btn {
+        width: 95%;
+    }
+}
+
+@media (max-width: 700px) {
+    body {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    button, .circle, .generate-btn, .reset-btn, .command-section h3, .preview p, .style-options p, .style-options label, .style-options select {
+        font-size: 10px;
+    }
+
+    .voice-btn, .voice-text, input, .send-btn, .voice-commands p, .command-section li, .preview-text, .preview li {
+        font-size: 8px;
+    }
+
+    .status {
+        font-size: 6px;
+    }
+
+    h2, .voice-commands h2 {
+        font-size: 14px;
+    }
+
+    .sample-slide {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 375px) {
+    button {
+        padding: 6px 6px;
+    }
+
+    .voice-btn {
+        padding: 6px 6px;
+    }
+}

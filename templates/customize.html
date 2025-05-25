@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="../static/js/customize.js" defer></script>
+    <link rel="stylesheet" href="../static/css/customize.css">
+
+    <title>Customize Presentation</title>
+</head>
+<body style="background: black;">
+    
+    <!-- Navbar -->
+    <div class="nav">
+        <h1>Customize Presentation</h1>
+        <div class="buttons">
+            <a href="../templates/upload.html"><button>Back to Upload</button></a>
+            <a href="../templates/index.html"><button>Back to Home</button></a>
+        </div>
+    </div>
+
+    <!-- User Prompt -->
+    <div class="userPrompt">
+        <div class="voice-header">
+            <button class="voice-btn">
+                <span>Start Voice Commands</span>
+            </button>
+            <span class="voice-text">Click to start voice commands</span>
+            <span class="status inactive">Inactive</span>
+        </div>
+        <div class="input-container">
+            <input type="text" placeholder="Type your command (e.g., 'theme modern' or 'font arial')">
+            <button class="send-btn">Send</button>
+        </div>
+    </div>
+
+    <!-- Steps Container -->
+    <div class="step-container">
+        <div class="step active">
+            <div class="circle">1</div>
+            <span class="label">Customize</span>
+        </div>
+        <div class="step">
+            <div class="circle">2</div>
+            <span class="label">Generate</span>
+        </div>
+        <div class="step">
+            <div class="circle">3</div>
+            <span class="label">Download</span>
+        </div>
+    </div>
+
+    <!-- Style and Preview -->
+    <div class="container">
+        <!-- Style -->
+        <div class="style-options">
+            <h2>Style Options</h2>
+            <p>Customize the look and feel using controls or voice commands</p>
+
+            <label for="theme">Theme</label>
+            <select id="theme">
+                <option value="modern">Modern</option>
+                <option value="classic">Classic</option>
+                <option value="dark">Dark Mode</option>
+            </select>
+
+            <label for="font">Font Family</label>
+            <select id="font">
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
+            </select>
+
+            <label for="color">Primary Color</label>
+            <input type="color" id="color" value="#363636">
+            <p><span id="selectedColor">#363636</span></p>
+
+            <label for="slideNumber">Select Slide</label>
+            <select id="slideNumber"></select>
+
+            <label for="headingInput">Edit Slide Heading</label>
+            <input type="text" id="headingInput" placeholder="Enter new heading">
+            <button id="updateHeadingBtn">Update Heading</button>
+
+            <label for="listItemNumber">List Item Number</label>
+            <input type="number" id="listItemNumber" min="1" placeholder="Enter list item number">
+            <label for="listItemText">List Item Text</label>
+            <input type="text" id="listItemText" placeholder="Enter new list item text">
+            <button id="updateListItemBtn">Update List Item</button>
+        </div>
+
+        <!-- Preview -->
+        <div class="preview">
+            <h2>Preview</h2>
+            <p>How your presentation might look</p>
+            <div class="preview-box" id="previewBox">
+                <!-- Slides will be injected here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Generate and Reset button -->
+    <div class="button-container">
+        <button class="generate-btn" id="downloadBtn">Generate & Download Presentation</button>
+        <button class="reset-btn" id="resetBtn">Reset Options</button>
+    </div>
+    
+    <!-- Voice Commands -->
+    <div class="voice-commands">
+        <h2>Voice Commands Guide</h2>
+        <p>Available voice commands for customization</p>
+        <div class="commands-container">
+            <div class="command-section">
+                <h3>Theme Commands</h3>
+                <ul>
+                    <li>“Theme modern”</li>
+                    <li>“Theme classic”</li>
+                    <li>“Theme dark”</li>
+                </ul>
+            </div>
+            <div class="command-section">
+                <h3>Font Commands</h3>
+                <ul>
+                    <li>“Font Arial”</li>
+                    <li>“Font Times New Roman”</li>
+                    <li>“Font Verdana”</li>
+                </ul>
+            </div>
+            <div class="command-section">
+                <h3>Action Commands</h3>
+                <ul>
+                    <li>“Generate” or “Create presentation”</li>
+                    <li>“Reset” or “Clear”</li>
+                    <li>“Change heading of slide [number] to [text]”</li>
+                    <li>“Change list item [number] of slide [number] to [text]”</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
