@@ -101,21 +101,67 @@ document.addEventListener("DOMContentLoaded", () => {
   if (backButton) backButton.addEventListener("click", resetToInitialState);
   if (startOverButton) startOverButton.addEventListener("click", resetToInitialState);
 
-  if (downloadButton) {
+if (downloadButton) {
     downloadButton.addEventListener("click", () => {
-      if (currentResult && currentResult.text) {
-        const blob = new Blob([currentResult.text], { type: "text/plain" });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `${currentResult.filename}.txt`;
-        a.click();
-        window.URL.revokeObjectURL(url);
-      } else {
-        alert("No text available to download.");
-      }
+        if (!currentResult) {
+            alert("No results available to download.");
+            return;
+        }
+
+        // Find the active tab
+        const activeTab = document.querySelector(".tab-button.active").dataset.tab;
+        let content = "";
+        let downloadFileName = `${currentResult.filename.split('.')[0]}`;
+
+        if (activeTab === "extracted-texts") {
+            content = currentResult.text || "";
+            downloadFileName += "_extracted.txt";
+        } else if (activeTab === "summary") {
+            const orderedSections = [
+                "Abstract",
+                "Introduction",
+                "Proposed Methodology",
+                "Results",
+                "Conclusion"
+            ];
+            content = orderedSections
+                .filter(section => currentResult.summary[section])
+                .map(section => `${section}\n${currentResult.summary[section]}\n`)
+                .join("\n");
+            downloadFileName += "_summary.txt";
+        } else if (activeTab === "keypoints") {
+            const orderedSections = [
+                "Abstract",
+                "Introduction",
+                "Proposed Methodology",
+                "Results",
+                "Conclusion"
+            ];
+            content = orderedSections
+                .filter(section => currentResult.keypoints[section] && currentResult.keypoints[section].length > 0)
+                .map(section => {
+                    const points = currentResult.keypoints[section]
+                        .map(point => `- ${point}`)
+                        .join("\n");
+                    return `${section}\n${points}\n`;
+                })
+                .join("\n");
+            downloadFileName += "_keypoints.txt";
+        }
+
+        if (content) {
+            const blob = new Blob([content], { type: "text/plain" });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = downloadFileName;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        } else {
+            alert("No content available to download for the selected tab.");
+        }
     });
-  }
+}
 
   if (customizeButton) {
     customizeButton.addEventListener("click", () => {
