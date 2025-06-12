@@ -1,8 +1,10 @@
 Flask==2.2.5
 flask-cors==3.0.10
 transformers==4.41.1
-torch>=1.10.0
-PyMuPDF==1.23.22
+torch
+#torch>=1.10.0
+#PyMuPDF==1.23.22
+PyMuPDF==1.21.1
 python-dotenv==1.0.1
 sumy==0.10.0
 python-pptx==0.6.23
