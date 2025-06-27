@@ -22,13 +22,13 @@ This tool is especially useful for researchers, students, and professionals who 
 
 ## 🌐 Live Demo
 
-Coming soon… (Deploy on Render/Heroku/Vercel or localhost)
+Coming soon..
 
 ---
 
 ## 📸 Preview
 
-(coming soon (: )
+coming soon (: 
 
 ---
 
@@ -51,9 +51,9 @@ Coming soon… (Deploy on Render/Heroku/Vercel or localhost)
 AutoSlide/
 ├── backend/
 │   ├── app.py                  # Flask server
-│   ├── extract\_text.py         # PDF/DOCX text extraction
+│   ├── extract_text.py         # PDF/DOCX text extraction
 │   ├── summarize.py            # HuggingFace summarization logic
-│   ├── generate\_ppt.py         # Generates PowerPoint using python-pptx
+│   ├── generate_ppt.py         # Generates PowerPoint using python-pptx
 │   └── utils.py                # Helpers
 ├── templates/
 │   ├── index.html              # File upload page
@@ -166,9 +166,9 @@ This work builds upon ideas from:
 
 Created with ❤️ by Shiva Jadiya, Sneha Gupta, Vaidik Jaiswal
 📍 Bhopal, Madhya Pradesh, India
-📧 [vaidikjaiswal@gmail.com](mailto:vaidikjaiswal@gmail.com) 
-📧 [shivajadiya2005@gmail.com](mailto:shivajadiya2005@gmail.com) 
-📧 [snehagpt1810@gmail.com](mailto:snehagpt1810@gmail.com) 
+- 📧 [vaidikjaiswal@gmail.com](mailto:vaidikjaiswal@gmail.com) 
+- 📧 [shivajadiya2005@gmail.com](mailto:shivajadiya2005@gmail.com) 
+- 📧 [snehagpt1810@gmail.com](mailto:snehagpt1810@gmail.com) 
     
 
 
